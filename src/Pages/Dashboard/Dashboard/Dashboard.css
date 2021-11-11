@@ -1,0 +1,8 @@
+.card{
+    border: none;
+}
+.card-header{
+    border-bottom: none;
+    background-color: rgb(60 60 60);
+    color: #fff;
+}

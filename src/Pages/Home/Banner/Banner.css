@@ -1,0 +1,15 @@
+.carousel-caption{
+    color: black;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    top:0;
+    height: 100%;
+    text-align: left;
+    font-family: Montserrat, sans-serif;
+}
+
+@media only screen  and (max-width: 600px) {
+    .carousel-indicators{ display: none; }
+    
+}
