@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Route, Switch, useRouteMatch } from 'react-router';
+import {Switch, useRouteMatch } from 'react-router';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import PrivateRoute from '../../Login/PrivateRoute/PrivateRoute';
 import Main from '../Main/Main';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import ManageOrders from '../ManageOrders/ManageOrders';
+import MyOrders from '../MyOrders/MyOrders';
+import Pay from '../Pay/Pay';
 import AddProduct from '../Products/AddProduct/AddProduct';
 import Products from '../Products/Products';
+import Review from '../Review/Review';
 import Sidebar from '../Sidebar/Sidebar';
 import './Dashboard.css';
 
@@ -26,18 +32,31 @@ const Dashboard = () => {
                 <div className="vh-100 py-4">
                     <div className="overflow-auto h-100 shadow">
                         <Switch>
-                            <Route exact path={path}>
+                            <PrivateRoute exact path={path}>
                                 <Main handleShow={handleShow}></Main>
-                            </Route>
-                            <Route exact path={`${path}/products`}>
+                            </PrivateRoute>
+                            <PrivateRoute exact path={`${path}/pay`}>
+                                <Pay handleShow={handleShow}></Pay>
+                            </PrivateRoute>
+                            <PrivateRoute exact path={`${path}/myOrders`}>
+                                <MyOrders handleShow={handleShow}></MyOrders>
+                            </PrivateRoute>
+                            <PrivateRoute exact path={`${path}/review`}>
+                                <Review handleShow={handleShow}></Review>
+                            </PrivateRoute>
+
+                            <AdminRoute exact path={`${path}/mangeOrders`}>
+                                <ManageOrders handleShow={handleShow}></ManageOrders>
+                            </AdminRoute>
+                            <AdminRoute exact path={`${path}/products`}>
                                 <Products handleShow={handleShow}></Products>
-                            </Route>
-                            <Route path={`${path}/products/add`}>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/products/add`}>
                                 <AddProduct handleShow={handleShow}></AddProduct>
-                            </Route>
-                            <Route path={`${path}/makeAdmin`}>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/makeAdmin`}>
                                 <MakeAdmin handleShow={handleShow}></MakeAdmin>
-                            </Route>
+                            </AdminRoute>
                         </Switch>
 
                     </div>

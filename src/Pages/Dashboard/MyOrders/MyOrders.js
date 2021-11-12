@@ -1,33 +1,31 @@
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, Card, Spinner, Table } from 'react-bootstrap';
-import { Link, useRouteMatch } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
-const Products = ({handleShow}) => {
-    const [products, setProducts] = useState([]);
-    const [loadProducts, setLoadProducts] = useState(true);
+const MyOrders = ({handleShow}) => {
+    const {user,} = useAuth();
+    const [orders, setOrders] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [deleteSuccessShow, setDeleteSuccessShow] = useState(false);
-    const {url} = useRouteMatch();
 
     useEffect(()=>{
-        axios.get('https://stark-plateau-07559.herokuapp.com/products?limit=all')
-        .then(result => {
-            setProducts(result.data);
-            setLoadProducts(false);
+        axios.get(`https://stark-plateau-07559.herokuapp.com/orders/${user.email}`)
+        .then(res=>{
+            setOrders(res.data);
+            setIsLoading(false);
         });
-        
-    }, [deleteSuccessShow]);
+    }, [user.email, deleteSuccessShow]);
 
-    const handleProductDelete = id =>{
+    const cancelOrder = id => {
         const con = window.confirm('Are you sure?');
         if(con){
-            axios.delete(`https://stark-plateau-07559.herokuapp.com/products/${id}`)
-            .then(res => {
-                console.log(res.data);
-                setDeleteSuccessShow(true);
-            });
+            axios.delete(`https://stark-plateau-07559.herokuapp.com/orders/${id}`)
+            .then(res => setDeleteSuccessShow(true));
         }
     }
+    
     return (
         <Card>
                         <Card.Header>
@@ -35,60 +33,69 @@ const Products = ({handleShow}) => {
                             
                                 <Button className="d-block d-md-none" variant="dark" onClick={handleShow}>
                                 <i className="fas fa-bars"></i>
-                                </Button> Products
+                                </Button> My Orders
                         </Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            <Link to={`${url}/add`}>
-                           <Button variant="dark">Add Product</Button>
-                            </Link>
                             {
                                 deleteSuccessShow && <Alert variant="danger" onClose={() => setDeleteSuccessShow(false)} dismissible>
                                 <Alert.Heading>Order Cancelled</Alert.Heading>
                                 
                                 </Alert>
                             }
-                            <Table responsive>
+                        <Table responsive>
                                 <thead>
                                     <tr>
                                         <th>Image</th>
-                                        <th>Name</th>
+                                        <th>Product Name</th>
                                         <th>Price</th>
-                                        <th>Descriptions</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                        loadProducts? <tr>
+                                {
+                                        isLoading? <tr>
                                             <td colSpan="100" className="text-center"> <Spinner animation="grow" variant="secondary" /></td>
                                         </tr>
                                         :
-                                        products.map((product) => <tr key={product._id}>
+                                        orders.map((order) => <tr key={order._id}>
                                                 <td>
-                                                    <img width="100" src={product.imgUrl} alt="" />
-                                                </td>
-                                                <td>
-                                                    {product.title}
+                                                <img height="100" src={order.imgUrl} alt="" />
                                                 </td>
                                                 <td>
-                                                    {product.price}
-                                                </td>
-                                                <td style={{ minWidth: '350px' }}>
-                                                    {product.description}
+                                                {order.product_name}
                                                 </td>
                                                 <td>
-                                                   <Button variant="danger" onClick={() => handleProductDelete(product._id)}>Delete</Button> 
+                                                    ${order.product_price}
                                                 </td>
+                                                <td>
+                                                    {order.phone}
+                                                </td>
+                                                <td>
+                                                    {order.address}
+                                                </td>
+                                                <td>
+                                                    {order.status ? <span className="badge bg-success">Approved</span> : <span className="badge bg-danger">Pending</span>}
+                                                </td>
+                                                <td>
+                                                    <Button variant="danger" size="sm" onClick={() => cancelOrder(order._id)}>Cancel</Button>
+                                                   
+                                                </td>
+                                                
                                             </tr>
                                         )
                                     }
                                    
                                 </tbody>
                             </Table>
+
+                       
                         </Card.Body>
                     </Card>
     );
 };
 
-export default Products;
+export default MyOrders;

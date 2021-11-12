@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
 
     //Sign in with google
@@ -84,6 +85,7 @@ const useFirebase = () => {
     }
 
 
+    //objerve user
     useEffect(() => {
         const unsubscribed =  onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -98,12 +100,18 @@ const useFirebase = () => {
     }, [auth]);
 
 
+    //Check admin
+    useEffect(()=>{
+        axios.get(`https://stark-plateau-07559.herokuapp.com/user/${user.email}`)
+        .then(res => setAdmin(res.data));
+    }, [user.email]);
     return {
         user,
         handleSignUpEmailPassword,
         handleGoogleSignIn,
         handleEmailLogin,
         error,
+        admin,
         setError,
         isLoading,
         handleLogout

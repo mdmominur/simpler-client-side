@@ -9,6 +9,7 @@ import Login from './Pages/Login/Login/Login';
 import Ragister from './Pages/Login/Ragister/Ragister';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ProductPage from './Pages/ProductPage/ProductPage';
+import SingleProduct from './Pages/SingleProduct/SingleProduct';
 
 function App() {
 
@@ -26,9 +27,12 @@ function App() {
             <Route path="/register">
               <Ragister></Ragister>
             </Route>
-            <Route path="/products">
+            <Route exact path="/products">
               <ProductPage></ProductPage>
             </Route>
+            <PrivateRoute exact path="/products/:id">
+              <SingleProduct></SingleProduct>
+            </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>

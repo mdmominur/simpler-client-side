@@ -4,7 +4,7 @@ import { useRouteMatch, NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import './Sidebar.css';
 const Sidebar = ({show, handleClose}) => {
-    const {user, handleLogout} = useAuth();
+    const {user, handleLogout, admin} = useAuth();
     let { url } = useRouteMatch();
 
     return (
@@ -18,13 +18,31 @@ const Sidebar = ({show, handleClose}) => {
                     <li>
                         <NavLink exact to={url} activeClassName="active">Dashboard</NavLink>
                     </li>
-                    
-                    <li>
-                        <NavLink exact to={`${url}/products`} activeClassName="active">Products</NavLink>
-                    </li>
-                    <li>
-                        <NavLink exact to={`${url}/makeAdmin`} activeClassName="active">Make Admin</NavLink>
-                    </li>
+                    {
+                        admin ? <>
+                            <li>
+                                <NavLink exact to={`${url}/mangeOrders`} activeClassName="active">Manage Orders</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/products`} activeClassName="active">Products</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/makeAdmin`} activeClassName="active">Make Admin</NavLink>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li>
+                                <NavLink exact to={`${url}/pay`} activeClassName="active">Pay</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/myOrders`} activeClassName="active">My Orders</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/review`} activeClassName="active">Review</NavLink>
+                            </li>
+                        </>
+                    }
 
                     <hr />
                     <div className="w-100 text-center">
@@ -48,13 +66,31 @@ const Sidebar = ({show, handleClose}) => {
                     <li>
                         <NavLink exact to={url} activeClassName="active">Dashboard</NavLink>
                     </li>
-                    
-                    <li>
-                        <NavLink exact to={`${url}/products`} activeClassName="active">Products</NavLink>
-                    </li>
-                    <li>
-                        <NavLink exact to={`${url}/makeAdmin`} activeClassName="active">Make Admin</NavLink>
-                    </li>
+                    {
+                        admin ? <>
+                            <li>
+                                <NavLink exact to={`${url}/mangeOrders`} activeClassName="active">Manage Orders</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/products`} activeClassName="active">Products</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/makeAdmin`} activeClassName="active">Make Admin</NavLink>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li>
+                                <NavLink exact to={`${url}/pay`} activeClassName="active">Pay</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/myOrders`} activeClassName="active">My Orders</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to={`${url}/review`} activeClassName="active">Review</NavLink>
+                            </li>
+                        </>
+                    }
 
                     <hr />
                     <div className="w-100 text-center">
