@@ -2,6 +2,12 @@
 
 Website Link: https://simpler-mominur.web.app/
 
+
+
+### `Admin Login info`
+Email: admin@admin.com
+Password: 123456
+
 ### `Introduction`
 This Simpler website has a home page for visualize menu, banner, about, Products, Reviews and footer. You can order an item from here. It also has dashboard, login system with google and Email password registration.
 
