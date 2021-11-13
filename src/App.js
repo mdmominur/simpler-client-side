@@ -10,6 +10,7 @@ import Ragister from './Pages/Login/Ragister/Ragister';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ProductPage from './Pages/ProductPage/ProductPage';
 import SingleProduct from './Pages/SingleProduct/SingleProduct';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
 
@@ -35,6 +36,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="*">
+              <NotFound></NotFound>
             </PrivateRoute>
             
           </Switch>

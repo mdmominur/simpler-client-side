@@ -16,9 +16,9 @@ const Main = ({handleShow}) => {
                         <Card.Body>
                             
                             <Card.Text>
-                            With supporting text below as a natural lead-in to additional content.
+                                Dashboard Features comming soon.
                             </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                           
                         </Card.Body>
                     </Card>
     );

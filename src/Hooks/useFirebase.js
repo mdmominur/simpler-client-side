@@ -21,7 +21,7 @@ const useFirebase = () => {
         .then((result) => {
             axios.put('https://stark-plateau-07559.herokuapp.com/user', {email: result.user.email, displayName: result.user.displayName})
             .then();
-            const destination = location?.state?.from || '/';
+            const destination = location?.state?.from || '/dashboard';
             history.replace(destination);
         }).catch((error) => {
             console.log(error.message);
@@ -44,7 +44,7 @@ const useFirebase = () => {
               }).then(() => {
                 axios.post('https://stark-plateau-07559.herokuapp.com/user', {email:userinfo.email, displayName: userinfo.name})
                 .then();
-               history.replace('/');
+               history.replace('/dashboard');
               }).catch((error) => {
                 // An error occurred
                 // ...
@@ -63,7 +63,7 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, loginInfo.email, loginInfo.password)
         .then((userCredential) => {
-            const destination = location?.state?.from || '/';
+            const destination = location?.state?.from || '/dashboard';
             history.replace(destination);
         })
         .catch((error) => {

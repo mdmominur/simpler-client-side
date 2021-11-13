@@ -63,7 +63,6 @@ const ManageOrders = ({handleShow}) => {
                                         <th>Product Name</th>
                                         <th>Price</th>
                                         <th>Customer Name</th>
-                                        <th>Customer Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
                                         <th>Status</th>
@@ -89,9 +88,7 @@ const ManageOrders = ({handleShow}) => {
                                                 <td>
                                                     {order.name}
                                                 </td>
-                                                <td>
-                                                    {order.email}
-                                                </td>
+                                                
                                                 <td>
                                                     {order.phone}
                                                 </td>
@@ -99,7 +96,7 @@ const ManageOrders = ({handleShow}) => {
                                                     {order.address}
                                                 </td>
                                                 <td>
-                                                    {order.status ? <span className="badge bg-success">Approved</span> : <span className="badge bg-danger">Pending</span>}
+                                                    {order.status ? <span className="badge bg-success">Shipped</span> : <span className="badge bg-danger">Pending</span>}
                                                 </td>
                                                 
                                                 <td>

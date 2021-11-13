@@ -17,7 +17,7 @@ const Banner = () => {
                         <Row className="g-4 h-100">
                             
                                 <Col className="h-100" xs={12}>
-                                    <div className="h-100 d-flex align-items-center text-left">
+                                    <div className="h-100 d-flex align-items-center text-center text-md-start">
                                         <div>
                                             <h1 className="display-5 fw-bold">Luxury Faucets Collections</h1>
                                             <h4 className="fw-bold d-none d-md-block">flat 60% off for first 30 Customer.</h4>
@@ -49,7 +49,7 @@ const Banner = () => {
                         <Row className="g-4 h-100">
                             
                                 <Col  xs={12} className="h-100">
-                                    <div className="h-100 d-flex align-items-center text-left">
+                                    <div className="h-100 d-flex align-items-center text-center text-md-start">
                                         <div>
                                             <h1 className="display-5 fw-bold">Luxury Faucets Collections</h1>
                                             <h4 className="fw-bold d-none d-md-block">flat 60% off for first 30 Customer.</h4>
@@ -82,7 +82,7 @@ const Banner = () => {
                         <Row className="g-4 h-100">
                             
                                 <Col className="h-100"  xs={12}>
-                                    <div className="h-100 d-flex align-items-center text-left">
+                                    <div className="h-100 d-flex align-items-center text-center text-md-start">
                                         <div>
                                             <h1 className="display-5 fw-bold">Luxury Faucets Collections</h1>
                                             <h4 className="fw-bold d-none d-md-block mt-3">flat 60% off for first 30 Customer.</h4>
