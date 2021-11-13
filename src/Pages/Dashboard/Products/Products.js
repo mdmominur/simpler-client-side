@@ -44,7 +44,7 @@ const Products = ({handleShow}) => {
                             </Link>
                             {
                                 deleteSuccessShow && <Alert variant="danger" onClose={() => setDeleteSuccessShow(false)} dismissible>
-                                <Alert.Heading>Order Cancelled</Alert.Heading>
+                                <Alert.Heading>Product Deleted</Alert.Heading>
                                 
                                 </Alert>
                             }
