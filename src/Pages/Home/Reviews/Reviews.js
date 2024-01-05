@@ -8,7 +8,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const [loadingReviews, setLoadingReviews] = useState(true);
     useEffect(()=>{
-        axios.get('https://stark-plateau-07559.herokuapp.com/reviews')
+        axios.get('https://simpler-api.mominur.net/reviews')
         .then(res => {
             setReviews(res.data);
             setLoadingReviews(false);

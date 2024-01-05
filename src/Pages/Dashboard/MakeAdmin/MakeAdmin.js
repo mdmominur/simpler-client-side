@@ -7,7 +7,7 @@ const MakeAdmin = ({handleShow}) => {
     const { register, handleSubmit, reset } = useForm();
     const [aletShow, setAlertShow] = useState(false);
     const onSubmit = data => {
-        axios.put('https://stark-plateau-07559.herokuapp.com/user/makeAdmin', data)
+        axios.put('https://simpler-api.mominur.net/user/makeAdmin', data)
         .then(result => {
             if(result.data.modifiedCount){
                 setAlertShow(true);

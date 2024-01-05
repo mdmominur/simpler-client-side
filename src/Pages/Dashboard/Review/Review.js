@@ -19,7 +19,7 @@ const Review = ({handleShow}) => {
     const handleReviewSubmit = e => {
         e.preventDefault();
         if(rate !== 0 && review !== ''){
-            axios.post('https://stark-plateau-07559.herokuapp.com/reviews', {email:user.email, name:user.displayName, rate: rate, review:review})
+            axios.post('https://simpler-api.mominur.net/reviews', {email:user.email, name:user.displayName, rate: rate, review:review})
             .then(res => {
                 if(res.data.insertedId){
                     setAlertShow(true);

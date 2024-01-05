@@ -9,7 +9,7 @@ const AddProduct = ({handleShow}) => {
     const [aletShow, setAlertShow] = useState(false);
 
     const onSubmit = data => {
-        axios.post('https://stark-plateau-07559.herokuapp.com/products', data)
+        axios.post('https://simpler-api.mominur.net/products', data)
         .then(result => {
             if(result.data.insertedId){
                 setAlertShow(true);

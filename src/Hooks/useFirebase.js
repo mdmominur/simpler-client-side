@@ -19,7 +19,7 @@ const useFirebase = () => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
         .then((result) => {
-            axios.put('https://stark-plateau-07559.herokuapp.com/user', {email: result.user.email, displayName: result.user.displayName})
+            axios.put('https://simpler-api.mominur.net/user', {email: result.user.email, displayName: result.user.displayName})
             .then();
             const destination = location?.state?.from || '/dashboard';
             history.replace(destination);
@@ -42,7 +42,7 @@ const useFirebase = () => {
             updateProfile(auth.currentUser, {
                 displayName: userinfo.name
               }).then(() => {
-                axios.post('https://stark-plateau-07559.herokuapp.com/user', {email:userinfo.email, displayName: userinfo.name})
+                axios.post('https://simpler-api.mominur.net/user', {email:userinfo.email, displayName: userinfo.name})
                 .then();
                history.replace('/dashboard');
               }).catch((error) => {
@@ -102,7 +102,7 @@ const useFirebase = () => {
 
     //Check admin
     useEffect(()=>{
-        axios.get(`https://stark-plateau-07559.herokuapp.com/user/${user.email}`)
+        axios.get(`https://simpler-api.mominur.net/user/${user.email}`)
         .then(res => setAdmin(res.data));
     }, [user.email]);
     return {

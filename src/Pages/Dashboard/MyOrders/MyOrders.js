@@ -11,7 +11,7 @@ const MyOrders = ({handleShow}) => {
     const [deleteSuccessShow, setDeleteSuccessShow] = useState(false);
 
     useEffect(()=>{
-        axios.get(`https://stark-plateau-07559.herokuapp.com/orders/${user.email}`)
+        axios.get(`https://simpler-api.mominur.net/orders/${user.email}`)
         .then(res=>{
             setOrders(res.data);
             setIsLoading(false);
@@ -21,7 +21,7 @@ const MyOrders = ({handleShow}) => {
     const cancelOrder = id => {
         const con = window.confirm('Are you sure?');
         if(con){
-            axios.delete(`https://stark-plateau-07559.herokuapp.com/orders/${id}`)
+            axios.delete(`https://simpler-api.mominur.net/orders/${id}`)
             .then(res => setDeleteSuccessShow(true));
         }
     }

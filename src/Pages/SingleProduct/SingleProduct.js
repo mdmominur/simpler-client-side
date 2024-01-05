@@ -14,7 +14,7 @@ const SingleProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const {id} = useParams();
     useEffect(()=>{
-        axios(`https://stark-plateau-07559.herokuapp.com/products/${id}`)
+        axios(`https://simpler-api.mominur.net/products/${id}`)
         .then(res => setProduct(res.data));
     }, [id]);
     const onSubmit = data => {
@@ -22,7 +22,7 @@ const SingleProduct = () => {
         data.product_id = product._id;
         data.product_name = product.title;
         data.product_price = product.price;
-        axios.post('https://stark-plateau-07559.herokuapp.com/orders', data)
+        axios.post('https://simpler-api.mominur.net/orders', data)
         .then(result => {
             if(result.data.insertedId){
                 setAlertShow(true);

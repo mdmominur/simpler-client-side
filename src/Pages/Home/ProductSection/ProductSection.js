@@ -7,7 +7,7 @@ const ProductSection = ({limit}) => {
     const [products, setProducts] = useState([]);
     const [loadProducts, setLoadProducts] = useState(true);
     useEffect(()=>{
-        axios.get(`https://stark-plateau-07559.herokuapp.com/products?limit=${limit}`)
+        axios.get(`https://simpler-api.mominur.net/products?limit=${limit}`)
         .then(result => {
             setProducts(result.data);
             setLoadProducts(false);

@@ -10,7 +10,7 @@ const Products = ({handleShow}) => {
     const {url} = useRouteMatch();
 
     useEffect(()=>{
-        axios.get('https://stark-plateau-07559.herokuapp.com/products?limit=all')
+        axios.get('https://simpler-api.mominur.net/products?limit=all')
         .then(result => {
             setProducts(result.data);
             setLoadProducts(false);
@@ -21,7 +21,7 @@ const Products = ({handleShow}) => {
     const handleProductDelete = id =>{
         const con = window.confirm('Are you sure?');
         if(con){
-            axios.delete(`https://stark-plateau-07559.herokuapp.com/products/${id}`)
+            axios.delete(`https://simpler-api.mominur.net/products/${id}`)
             .then(res => {
                 console.log(res.data);
                 setDeleteSuccessShow(true);
